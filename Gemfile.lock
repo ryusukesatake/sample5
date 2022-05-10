@@ -291,6 +291,9 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  net-imap
+  net-pop
+  net-smtp
   pg
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
