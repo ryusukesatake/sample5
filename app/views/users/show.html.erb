@@ -1,0 +1,47 @@
+<h1>ユーザーページ</h1>
+
+
+<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<h2>ユーザーの投稿一覧</h2>
+<% @user.tweets.each do |t| %>
+  <%= t.user.name %>
+  <%= link_to t.body, tweet_path(t.id) %>
+<% end %>
+
+
+<h2>ユーザーがいいねした投稿一覧</h2>
+<% @user.liked_tweets.each do |t| %>
+  <%= t.user.name %>
+  <%= link_to t.body, tweet_path(t.id) %>
+<% end %>
+<%= link_to "ユーザー一覧", users_path %>
+<br>
+<%= link_to "Tweet一覧に戻る", tweets_path %>
+<%= button_to "ログアウト", destroy_user_session_path, :method => :delete %>
+
+
+<% if @user.id == current_user.id %>
+
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+

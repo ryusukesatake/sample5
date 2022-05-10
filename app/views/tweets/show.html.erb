@@ -1,0 +1,55 @@
+<h1>詳細</h1>
+<% if @tweet.image.present? %>
+    <%= image_tag @tweet.image_url, :size => "500x300" %>
+<% end %>
+
+
+
+<div class="tweet">
+(♡<%= @tweet.liked_users.count %>)
+<a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.name %></a>
+
+  <p><%= @tweet.body %></p>
+  <% if user_signed_in? %>
+  <% if current_user.already_liked?(@tweet) %>
+      <%= button_to tweet_like_path(@tweet), method: :delete do %>
+          <p>いいねを取り消す</p><%= @tweet.likes.count %>
+          <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
+  <% else %>
+      <%= button_to tweet_likes_path(@tweet), method: :post do %>
+          <p>いいね</p><%= @tweet.likes.count %>
+          <i class="far fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
+  <% end %>
+<% else %>
+  <p>いいねの数 = </p><%= @tweet.likes.count %>
+  <i class="far fa-heart"></i><%= @tweet.likes.count %>
+<% end %>
+<p><%= @tweet.created_at.to_s(:datetime_jp) %></p>
+</div>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= button_to "編集する", edit_tweet_path(@tweet.id) %>
+
+<%= link_to "Tweet一覧に戻る", tweets_path %>

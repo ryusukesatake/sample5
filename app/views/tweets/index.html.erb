@@ -1,0 +1,113 @@
+<h1>Tweet一覧</h1>
+
+<div>
+<h3>ジャンル</h3>
+    <a href="/tweets/page1"> 朝の有効活用術</a>
+    <a id="index"></a>
+    <a href="/tweets/page1"></a>
+
+    <a href="/tweets/page2"> 休日の活用術</a>
+    <a id="index"></a>
+    <a href="/tweets/page2"></a>
+    
+    <a href="/tweets/page3"> 隙間時間,移動時間の有効活用術</a>
+    <a id="index"></a>
+    <a href="/tweets/page3"></a>
+
+    <a href="/tweets/page4"> 有効活用スペース紹介</a>
+    <a id="index"></a>
+    <a href="/tweets/page4"></a>
+
+    <a href="/tweets/page5"> 退屈に感じない為の方法</a>
+    <a id="index"></a>
+    <a href="/tweets/page5"></a>
+
+    <a href="/tweets/page6"> 眠くならない為の方法</a>
+    <a id="index"></a>
+    <a href="/tweets/page6"></a>
+    <br>
+
+    <a href="/tweets/page7"> 空きコマの活用術</a>
+    <a id="index"></a>
+    <a href="/tweets/page7"></a>
+
+    <a href="/tweets/page8"> 朝の支度時短術</a>
+    <a id="index"></a>
+    <a href="/tweets/page8"></a>
+
+    <a href="/tweets/page9"> スケジュール管理法</a>
+    <a id="index"></a>
+    <a href="/tweets/page9"></a>
+
+    <a href="/tweets/page10"> 暇な時間の利用法</a>
+    <a id="index"></a>
+    <a href="/tweets/page10"></a>
+
+    <a href="/tweets/page11"> 効率よく勉強する為の方法 </a>
+    <a id="index"></a>
+    <a href="/tweets/page11"></a>
+
+    <a href="/tweets/page12"> その他</a>
+    <a id="index"></a>
+    <a href="/tweets/page12"></a>
+</div>
+
+
+<h3>投稿を検索</h3>
+  <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する'  %>
+  <% end %>
+
+  
+  
+  <%= page_entries_info @tweets %>
+
+<div class="tweets-container">
+<% @tweets.each do |t| %>
+    <div class="tweet">
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+<br>
+    (♡<%= t.liked_users.count %>)
+    <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+    <br>
+      <%= t.body %>
+  <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= button_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.likes.count %>
+              <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% else %>
+          <%= button_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+              <p>いいね</p><%= t.likes.count %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <p>いいねの数 = </p><%= t.likes.count %>
+      <i class="far fa-heart"></i><%= t.likes.count %>
+  <% end %>
+  
+  
+
+    
+
+      <%= t.created_at.to_s(:datetime_jp) %>
+      <%= link_to "詳細へ", tweet_path(t.id) %>
+    <% if user_signed_in? && current_user.id == t.user_id %>  
+      <%= link_to "編集する", edit_tweet_path(t.id) %>
+      <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+    <% end %>
+    </div>
+<% end %>
+</div>
+<%= paginate @tweets %>
+
+<% if user_signed_in? %>
+  <%= link_to "ユーザーページ", user_path(current_user.id) %>
+  <% end %>
+
+
+
+    
