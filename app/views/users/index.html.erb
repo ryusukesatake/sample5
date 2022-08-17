@@ -1,17 +1,21 @@
+<div class ="tweetsindextitle">
 <h1>DM</h1>
-
-
-<% if user_signed_in? %>
-    <% @users.each do |u| %>
-    <img src=<%= u.image %> class = "iconimage">
-    <p><a href="/users/<%= u.id %>"><%= u.name %>さん</a></p>
-    <% end %>
-
-
-    
-    <%= button_to "ログアウト", destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to "ユーザーを登録する", new_user_registration_path %>
-    <br>
-    <%= link_to "ログインする", new_user_session_path %>
-<% end %>
+</div>
+    <div class ="tweetsindextitle1">
+        <% if user_signed_in? %>
+            <% @users.each do |u| %>
+                <div class ="photo6">
+                    <%= image_tag u.image_url, size: "250x200" if u.image? %>
+                </div>
+                <div classs="photo7">
+                    <%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size: "250x200"unless u.image? %>   
+                </div>
+                <p><a href="/users/<%= u.id %>"><%= u.name %>さん</a></p>
+        <% end %>
+    </div> 
+            <%= button_to "ログアウト", destroy_user_session_path, :method => :delete %>
+        <% else %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <br>
+            <%= link_to "Log in", new_user_session_path %>
+        <% end %>

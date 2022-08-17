@@ -1,113 +1,268 @@
-<h1>Tweet一覧</h1>
+<%= stylesheet_link_tag 'index', :media=> "all" %>
 
-<div>
-<h3>ジャンル</h3>
-    <a href="/tweets/page1"> 朝の有効活用術</a>
-    <a id="index"></a>
-    <a href="/tweets/page1"></a>
+<ul class="picture">
+        <a href="#1"><%= image_tag "redsugar201025932.jpg.webp", size: "1349x600" %><p>充実した<br>毎日を。</p></a>
+</ul class="picture">
+<div class ="naiyou">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="tag5">
+    <h2>About</h2>
+  </div>
+  <div class="moji1">
+    <center>
+    このサービスは、時間を上手く使えるようになる為の方法を共有するサイトです。<br>
+    </center>
+  </div>
+  <div class="moji2">
+    <center>
+    共通点を持った人と一緒にコミュニケーションを取ることができたり、他のユーザーの投稿を見ることができます。
+    </center>
+  </div>
+</div>
+<br>
 
-    <a href="/tweets/page2"> 休日の活用術</a>
-    <a id="index"></a>
-    <a href="/tweets/page2"></a>
-    
-    <a href="/tweets/page3"> 隙間時間,移動時間の有効活用術</a>
-    <a id="index"></a>
-    <a href="/tweets/page3"></a>
 
-    <a href="/tweets/page4"> 有効活用スペース紹介</a>
-    <a id="index"></a>
-    <a href="/tweets/page4"></a>
+<div class="circle">
+  <div class="oya">
+    <div class= "circle-one">
+      <div class= "tag1">
+        <br>
+        新規投稿 
+      </div>
+      <div class="photo1">
+        <%=image_tag "Instagram_icon-icons.com_66804.png", size:"140x140" %>
+      </div>
+    </div>
+    <div class="bun1">
+      充実した時間を共有し、
+    </div>
+    <div class="bun2">
+    モチベーションを高め合いましょう!
+    </div>
+  </div>
 
-    <a href="/tweets/page5"> 退屈に感じない為の方法</a>
-    <a id="index"></a>
-    <a href="/tweets/page5"></a>
+    <div class="oya">
+      <div class="circle-four">
+        <div class= "tag2">
+          <br>
+          DM
+        </div>
+        <div class="photo2">
+          <%=image_tag "istockphoto-1251066727-612x612.jpg", size:"140x140" %>
+        </div>
+      </div>
+        <div class="bun3">
+          共通点を持った
+        </div>
+        <div class="bun4">
+          ユーザーと一緒に取り組もう!!
+        </div>
+    </div>
 
-    <a href="/tweets/page6"> 眠くならない為の方法</a>
-    <a id="index"></a>
-    <a href="/tweets/page6"></a>
-    <br>
-
-    <a href="/tweets/page7"> 空きコマの活用術</a>
-    <a id="index"></a>
-    <a href="/tweets/page7"></a>
-
-    <a href="/tweets/page8"> 朝の支度時短術</a>
-    <a id="index"></a>
-    <a href="/tweets/page8"></a>
-
-    <a href="/tweets/page9"> スケジュール管理法</a>
-    <a id="index"></a>
-    <a href="/tweets/page9"></a>
-
-    <a href="/tweets/page10"> 暇な時間の利用法</a>
-    <a id="index"></a>
-    <a href="/tweets/page10"></a>
-
-    <a href="/tweets/page11"> 効率よく勉強する為の方法 </a>
-    <a id="index"></a>
-    <a href="/tweets/page11"></a>
-
-    <a href="/tweets/page12"> その他</a>
-    <a id="index"></a>
-    <a href="/tweets/page12"></a>
+    <div class ="oya">
+      <div class ="circle-five">
+        <div class= "tag8">
+          <br>
+          改善方法を知る
+        </div>
+        <div class="photo5">
+          <%=image_tag "1faf284c8ae8acadf696877e969219d5_t.jpeg", size:"140x140" %>
+        </div>  
+      </div>
+      <div class="bun5">
+        ユーザーの改善方法を
+      </div>
+      <div class="bun6">
+        知ることができ、参考に取り組んでみましょう!!
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<h3>投稿を検索</h3>
-  <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag '検索する'  %>
-  <% end %>
-
-  
-  
-  <%= page_entries_info @tweets %>
-
-<div class="tweets-container">
-<% @tweets.each do |t| %>
-    <div class="tweet">
-      <%= image_tag t.image_url, size: "250x200" if t.image? %>
 <br>
-    (♡<%= t.liked_users.count %>)
-    <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+<br>
+<br>
+  <div class ="link"> 
+    <% if user_signed_in? %> 
+    <div class="moji3"> 
+    <span class="moji8">実践事例</span>を<span>投稿</span>しよう！下のボタンを<span class="moji8">クリック</span>
+    </div>
+    <div class="circle5">
+      <a class="btn-style-link3" href="/tweets/new">新規投稿</a>
+    </div>
+
+    <% else %>
+    <div class="moji3">
+    <span class="moji7">時間</span>を<span>有効活用</span>しよう！こちらから<span class="moji7">無料で</span>登録
+    </div>
+    <div class="moji4">
+    アカウントをお持ちの場合、こちらからログイン
+    </h3>
     <br>
-      <%= t.body %>
-  <% if user_signed_in? %>
-      <% if current_user.already_liked?(t) %>
-          <%= button_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-              <p>いいねを取り消す</p><%= t.likes.count %>
-              <i class="fas fa-heart"></i><%= t.likes.count %>
-          <% end %>
-      <% else %>
-          <%= button_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
-              <p>いいね</p><%= t.likes.count %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-          <% end %>
-      <% end %>
-  <% else %>
-      <p>いいねの数 = </p><%= t.likes.count %>
-      <i class="far fa-heart"></i><%= t.likes.count %>
-  <% end %>
-  
-  
-
-    
-
-      <%= t.created_at.to_s(:datetime_jp) %>
-      <%= link_to "詳細へ", tweet_path(t.id) %>
-    <% if user_signed_in? && current_user.id == t.user_id %>  
-      <%= link_to "編集する", edit_tweet_path(t.id) %>
-      <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+    <div class="circle5">
+      <a  class="btn-style-link" href="/users/tweets">ログイン</a>
+      <a class= "btn-style-link2" href="/users/sign_up">新規登録</a>
     <% end %>
     </div>
+    </div>
+  </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <h3>投稿を検索</h3><%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag '検索する'  %>
+    <% end %>
+    </center>
+    <br>
+  <center>
+  <h1>投稿一覧</h1>
+  </center>
+
+  <center>
+    <%= page_entries_info @tweets %>
+  </center>
+  
+<div class="tweets-container">
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size: "250x200" unless t.image? %>
+      <br>
+      ♡<%= t.liked_users.count %>
+      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+      <br>
+      <%= t.body %>
+      <br>
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+            <%= button_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+                <p>いいねを取り消す</p><%= t.likes.count %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% else %>
+            <%= button_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                <p>いいね</p><%= t.likes.count %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% end %>
+      
+      <% end %>
+      <%= t.created_at.to_s(:datetime_jp) %>
+      <br>
+      <%= link_to "詳細へ", tweet_path(t.id) %>
+      <% if user_signed_in? && current_user.id == t.user_id %>  
+        <%= link_to "編集する", edit_tweet_path(t.id) %>
+        <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<center>
+<%= paginate @tweets %>
+</center>
+
+<br>
+<br>
+    <h3>ジャンル</h3>
+    <br>
+<div class="zyannrus">
+    <div class="tweets-zyannru1">
+      <a class= "tweet-ko" href="/tweets/page1">
+      <%= image_tag 'photo-1465488867967-ffb57e7f0a89.webp',size: "130x130" %>
+      <p>朝の有効活用術</p>
+      </a>
+    </div>
+  <div class="tweets-zyannru1">
+    <a class= "tweet-ko" href="/tweets/page2">
+      <%= image_tag 'photo-1634041952368-a41e65d99318.webp',size: "130x130" %>
+        <p>休日の活用術</p>
+    </a>
+  </div>
+    
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page3">
+      <%= image_tag 'photo-1562031736-0bdddeb1086f.webp',size: "130x130" %>
+        <p>隙間時間有効活用術</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page4">
+      <%= image_tag 'coffee-2242213_960_720.jpg',size: "130x130" %>
+        <p>有効活用スペース紹介</p>
+    </a>
+  </div>
+
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page5">
+      <%= image_tag 'istockphoto-955020826-612x612.jpg',size: "130x130" %>
+        <p>退屈に感じない方法</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page6">
+      <%= image_tag '7c23a92a91b6e20017a793ed3b9b78ce_t.jpeg',size: "130x130" %>
+        <p>眠くならない為の方法</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page7">
+      <%= image_tag 'ee4c0d9c2c5e297f9c7e599eac9b9e60_t.jpeg',size: "130x130" %>
+        <p>空きコマの活用術</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page8">
+      <%= image_tag '8d3ef6a832fe813d336048cb9f463447_t.jpeg',size: "130x130" %>
+        <p>朝の支度時短術</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page9">
+      <%= image_tag 'istockphoto-1091264928-612x612.jpg',size: "130x130" %>
+        <p> スケジュール管理法</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page10">
+      <%= image_tag '36db31a4d19c0de77e904d3174d8cb8f_t.jpeg',size: "130x130" %>
+        <p> 暇な時間の利用法</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page11">
+      <%= image_tag 'man-g2e98d2b2b_640.jpg',size: "130x130" %>
+      <p> 効率よく勉強する方法</p>
+    </a>
+  </div>
+  <div class="tweets-zyannru1"> 
+    <a class= "tweet-ko" href="/tweets/page12">
+      <%= image_tag '4db73f1dea47437a9aba1cc362fd8308_t.jpeg',size: "130x130" %>
+        <p>  移動時間の有効活用術</p>
+    </a>
+  </div>
+</div>
+
+
+<div class= "maipe-zi">
+<% if user_signed_in? %>
+  <%= link_to "マイページ", user_path(current_user.id) %>
 <% end %>
 </div>
-<%= paginate @tweets %>
 
-<% if user_signed_in? %>
-  <%= link_to "ユーザーページ", user_path(current_user.id) %>
-  <% end %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 
+<div id="page_top"><a href="#"></a></div>
 
 
-    
+

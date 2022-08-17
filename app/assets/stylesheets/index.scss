@@ -1,23 +1,437 @@
 .tweets-container {
-    width: 50%;
-    margin: 10px auto;
-  }
-  h3 {
-    width: 100px;
+    width: 100%;
     margin: 30px auto;
+    display:flex;
+    flex-wrap:wrap;
     text-align: center;
   }
+
+
+  h2{
+    width:100%;
+  }
+  a.btn-style-link3{
+    display: inline-block;
+    padding: 16px 24px;
+    text-decoration: none;
+    border: 1px;
+    background: rgb(17, 252, 252);;
+    color: rgb(7, 6, 6);
+    box-shadow: 0px 2px 4px #575;
+    border-radius:30px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width:250px;
+  }
+  a.btn-style-link{
+    display: inline-block;
+    padding: 16px 24px;
+    text-decoration: none;
+    border: 1px;
+    background: rgb(17, 252, 252);
+    color: rgb(7, 6, 6);
+    box-shadow: 0px 2px 4px #575;
+    border-radius:30px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width:180px;
+    
+  }
+  .circle5{
+    margin-top: 15px;
+  }
+  a.btn-style-link2{
+    display: inline-block;
+    padding: 16px 24px;
+    text-decoration: none;
+    border: 1px;
+    background: rgb(174, 225, 245);;
+    color: rgb(7, 6, 6);
+    box-shadow: 0px 2px 4px #575;
+    border-radius:30px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width:180px;
+    margin-left:20px;
+  }
+  .tag5{
+    margin-left:39%;
+  }
+  .naiyou{
+    margin-left:191px;
+  }
+  .tweets-zyannru {
+    width: 100%;
+    margin: 30px auto;
+    flex-wrap:wrap;
+    margin-top: 10px;
+    padding-top: 20px;
+    text-align: left;
+    justify-content: space-around;
+    background-color: red;
+    color:red;
+  }
+  .moji1{
+    align-items: center;
+    margin-left: -15%;
+  }
+  .moji2{
+    margin-left:-15%;
+  }
+  .circle{
+    justify-content: flex-start; 
+    display:flex;
+  }
+  .circle-one{
+    border: solid 2px #030303;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 50%;
+    margin-top: -0.08%;
+    margin-left: 40%;
+}
+  .circle-two{
+    border: solid 2px #030303;
+    margin: 10px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    top: 48px;
+    position: absolute;
+    top: 29.2%;
+    left: 40%;
+  }
+  .circle-three{
+    border: solid 2px #030303;
+    margin: 50px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    top: 28.2%;
+    left: 68%;
+  }
+  .circle-four{
+    border: solid 2px #030303;
+    margin: 1px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-left: 115%;
+  }
+  .circle-five{
+    border: solid 2px #030303;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    margin-left: 134%;
+    border-radius: 50%;
+  }
+  .tweets-zyannru1{
+    list-style: none;
+    float: left;
+    display:flex;
+    flex-wrap:wrap;
+    width: 30%;
+    height:20%;
+    justify-content: center;
+    align-items:center;
+    margin: 5px;
+  }
+  .tweet-ko {
+    display:flex;
+    border: solid 2px rgb(250,247,247);
+    background-color:  #eee;
+    text-align: left;
+    width: 100%;
+    list-style: none;
+    line-height:130px;
+    vertical-align:middle;
+    border-radius: 20px;
+    margin-left:18%;
+    img{
+      width:50%;
+    }
+
+    }
+  .radius_test2{
+    display:flex;
+    flex-wrap:wrap;
+    width: 60%;
+    justify-content: space-between;
+    background-color: rgb(190, 87, 87);     /* 背景色指定 */
+    margin: 0 auto;
+  }
+  .radius_test2 a{
+    display:block;
+    position :absolute;
+  }
+  h3 {
+    
+    width: 50%;
+    margin:auto;
+    text-align: center;
+  }
+
   .tweet {
+    width: 33%;
     border-top: solid #00acee;
     margin-top: 10px;
     padding-top: 20px;
+    text-align: center;
   }
-  .main-box {
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-  }
+  
   .time {
+    width: 100px;
     display: flex;
     justify-content: flex-end;
+    justify-content: space-around; 
+    text-align: center;
   }
+  .picture{
+    list-style: none;
+    position: relative;
+    li{}
+  }
+  .picture p {
+    position: absolute;/*絶対配置*/
+    color: rgb(248, 248, 248);/*文字は白に*/
+    top:50%;
+    left: 0%;
+    font-weight: bold; /*太字に*/
+  font-size: 5em;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+    }
+  .pictures{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  .photo1{
+    margin: 0 auto;
+    text-align: center;
+}
+  .photo2{
+    margin: 0 auto;
+    text-align: center;
+    }
+  .photo3{
+    margin: 0 auto;
+    text-align: center;
+    } 
+  .photo4{
+    margin: 0 auto;
+    text-align: center;
+    } 
+  .photo5{
+    margin: 0 auto;
+    text-align: center;
+      } 
+  .tag1{
+    font-size: 20px;
+    left: 65px;
+    margin-top: -4px;
+    margin-left: 85px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .tag2{
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: 700;
+  }
+  .tag3{
+    top: -6px;
+    font-size: 20px;
+    left: -543px;
+    width: 159px;
+    margin-left: 600px;
+    text-align: left;
+    font-weight: 700;
+    height: 100;
+    position: absolute;
+  }
+  .tag8{
+    top: -4.4%;
+    font-size: 20px;
+    width: 159px;
+    margin-left: 21%;
+    text-align: left;
+    font-weight: 700;
+    height: 100;
+  }
+  .img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left:100%;
+    padding:20%;
+  }
+  .pictures{
+    animation: slide 14s infinite;/* (a+b)×c=x */
+    opacity: 0;
+  }
+  @keyframes slide{
+    0%{opacity: 0;}
+    3.5%{opacity: 1;z-index: 1;}/* b÷x×100=y */
+    25%{opacity: 1;}/* 100÷c=z */
+    28.5%{opacity: 0;z-index: 0;}/* y+z */
+  }
+  .picture:hover li{
+    animation-play-state:paused;/* マウスを載せると一時停止 */
+  }
+  .pictures:first-child{
+    position:relative;
+  }
+  .maipe-zi{
+    width:100%;
+    text-align:center;
+  }
+  #page_top{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+  #page_top a{
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    text-decoration: none;
+  }
+  #page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: #3f98ef;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  #page_top a::after{
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #fff;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    color: #3f98ef;
+  }
+  p.img_center{
+    margin-left:30px;
+  }
+  .bun1{
+    width: 100%;
+    margin-left: 40%;
+    font-weight: 500;
+    margin-top: -3%;
+    text-align: center;
+  }
+  .bun2{
+    width: 104%;
+    top: -1px;
+    left: 85px;
+    font-weight: 500;
+    margin: 0px;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: 0%;
+  }
+  .bun3{
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 116%;
+  }
+  .bun4{
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 113%;
+  }
+  .bun5{
+    width: 100%;
+    font-weight: 500;
+    margin-left: 126%;
+    text-align: center;
+  }
+  .bun6{
+    width: 100%;
+    font-weight: 500;
+    margin-left: 129%;
+    text-align: center;
+  }
+  .moji7{
+    color: blue;
+  }
+  .moji8{
+    color: blue;
+  }
+  .moji3{
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .moji4{
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .zynnrus{
+    padding-top: 100px;
+    width:100%;
+    margin:auto;
+    height:1000px;
+    background-color: red;
+    display:flex;
+    text-align: center;
+    margin-left:12%
+  }
+  .p{
+    width:50%;
+  }
+  .oya{
+    vertical-align: bottom;
+  }
+  .a{
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    top: 40px;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 0;
+    background: rgba(61, 46, 6, 0.56);
+}
+.tweetsindextitle h1 {
+  text-align: center;
+  margin:0 auto;
+}
+.photo6 image{
+  border-radius: 50%;
+  width:200px;
+  height:200px;
+}
+
+.photo7 image{
+  border-radius:50%;
+}

@@ -1,9 +1,7 @@
     Rails.application.routes.draw do
-    devise_for :users
+    devise_for :users, controllers: {   registrations: 'users/registrations',
+    sessions: 'users/sessions' }
     resources :users, only: [:index, :show]
-    
-    resources :messages, :only => [:create]
-    resources :rooms, :only => [:create, :show, :index]
 
     get 'tweets/page1' => 'tweets#page1'
     get 'tweets/page2' => 'tweets#page2'
@@ -18,9 +16,10 @@
     get 'tweets/page11' => 'tweets#page11'
     get 'tweets/page12' => 'tweets#page12'
     
-    root 'tweets#index'
-    post 'tweets/:id' => 'tweets#show'
-    post 'tweets/:id/edit' => 'tweets#edit'
+    root "tweets#index"
+
+    resources :messages, :only => [:create]
+    resources :rooms, :only => [:create, :show, :index]
     resources :tweets do
       resources :likes, only: [:create, :destroy] 
       resources :comments, only: [:create]

@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!, :only => [:show]
-    def index
-        @users=User.all
-    end
+    
     
     def show
-        @user = User.find(params[:id])
+        @users = User.find(params[:id])
         @currentUserEntry=Entry.where(user_id: current_user.id)
-        @userEntry=Entry.where(user_id: @user.id)
-        if @user.id == current_user.id
+        @userEntry=Entry.where(user_id: @users.id)
+        if @users.id == current_user.id
         else
             @currentUserEntry.each do |cu|
                 @userEntry.each do |u|
@@ -24,5 +22,8 @@ class UsersController < ApplicationController
                 @entry = Entry.new
             end
         end
+    end
+    def index
+        @users=User.all
     end
 end

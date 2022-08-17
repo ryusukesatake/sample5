@@ -1,17 +1,17 @@
-<%= form_for @tweet do |f| %>
-    <div class="field">
-        <%= f.label :body %>
-        <%= f.text_field :body, :size => 140 %>
-    </div>
-
-    <%= f.select :genre, [["朝の有効活用方法", 1], ["休日の活用方法", 2], ["隙間時間,移動時間の利用方法", 3], ["有効活用スペース", 4],["退屈に感じない活用術", 5], ["眠くならないための活用術", 6], ["秋コマの活用術", 7], ["朝の支度時短術", 8], ["スケジュール管理法", 9], ["暇な時間の利用法", 10], ["効率良く勉強する為の方法", 11], ["その他", 12]], include_blank: "選択して下さい" %>
-    <div class="field">
-        <%= f.label :image %>
-        <%= f.file_field :image %>
-    </div>
-
-
-    <%= f.submit "Tweetする" %>
-
-    
-<% end %>
+<div class="post-container">
+    <div class= "tweet6">
+    <%= form_for @tweet do |f| %>
+        <div class="field">
+            <%= f.label :Title %>
+            <%= f.text_field :body, :size => 140 %>
+        </div>
+        <%= f.label :genre %>
+        <%= f.select :genre, [["朝の有効活用方法", 1], ["休日の活用方法", 2], ["隙間時間,移動時間の利用方法", 3], ["有効活用スペース", 4],["退屈に感じない活用術", 5], ["眠くならないための活用術", 6], ["秋コマの活用術", 7], ["朝の支度時短術", 8], ["スケジュール管理法", 9], ["暇な時間の利用法", 10], ["効率良く勉強する為の方法", 11], ["その他", 12]], include_blank: "選択して下さい" %>
+        <div class="field">
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+        </div>
+        <%= f.submit "Tweetする" %>
+        <br>
+        <% end %>
+</div>

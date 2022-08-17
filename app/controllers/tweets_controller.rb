@@ -2,16 +2,16 @@ class TweetsController < ApplicationController
     def index
       @tweets = Tweet.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
         if params[:search] == nil
-          @tweets= Tweet.all.page(params[:page]).per(3)
+          @tweets= Tweet.all.page(params[:page]).per(6)
       elsif params[:search] == ''
-        @tweets= Tweet.all.page(params[:page]).per(3)
+        @tweets= Tweet.all.page(params[:page]).per(6)
       else
         #部分検索
-        @tweets = Tweet.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3)
+        @tweets = Tweet.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(6)
       end
     end
 
-    before_action :authenticate_user!
+
 
     def new
         @tweet = Tweet.new

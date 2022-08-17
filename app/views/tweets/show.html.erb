@@ -23,7 +23,7 @@
       <% end %>
   <% end %>
 <% else %>
-  <p>いいねの数 = </p><%= @tweet.likes.count %>
+  <p>いいねの数  </p><%= @tweet.likes.count %>
   <i class="far fa-heart"></i><%= @tweet.likes.count %>
 <% end %>
 <p><%= @tweet.created_at.to_s(:datetime_jp) %></p>
@@ -49,7 +49,7 @@
     <% end %>
   <% end %>
 </div>
-
+<% if user_signed_in? && current_user.id == @tweet.user_id %>
 <%= button_to "編集する", edit_tweet_path(@tweet.id) %>
-
+<% end %>
 <%= link_to "Tweet一覧に戻る", tweets_path %>
