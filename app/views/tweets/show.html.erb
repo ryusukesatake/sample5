@@ -1,12 +1,14 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
 <h1>詳細</h1>
+<div class="tweet">
 <% if @tweet.image.present? %>
-    <%= image_tag @tweet.image_url, :size => "500x300" %>
+  <%= image_tag @tweet.image_url, :size => "400x300" %>
+<% else %>
+<%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size:  "400x300" %>
 <% end %>
 
-
-
-<div class="tweet">
-(♡<%= @tweet.liked_users.count %>)
+<br>
+♡<%= @tweet.liked_users.count %>
 <a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.name %></a>
 
   <p><%= @tweet.body %></p>
@@ -28,28 +30,42 @@
 <% end %>
 <p><%= @tweet.created_at.to_s(:datetime_jp) %></p>
 </div>
-
+<br>
 <div class="comment-wrapper">
   <p>コメント一覧</p>
+</div>
+<br>
+<div class "coment-wrap">
   <% @comments.each do |c| %>
     <div>
       <%= c.user.email unless c.user.blank? %>
       <br>
       <%= c.content %>
     </div>
+    </div>
       <br>
   <% end %>
+  </div>
 
-  <% if user_signed_in? %>
-    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
+<div class="comments">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+        <%= f.text_area :content %>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-comments"></i> コメントする
+        <% end %>
       <% end %>
-    <% end %>
   <% end %>
 </div>
-<% if user_signed_in? && current_user.id == @tweet.user_id %>
-<%= button_to "編集する", edit_tweet_path(@tweet.id) %>
+<br>
+<div class="tweeta">
+  <% if user_signed_in? && current_user.id == @tweet.user_id %>
+  <%= button_to "編集する", edit_tweet_path(@tweet.id) %>
 <% end %>
+</div>
+
+<br>
+<div class ="itiran" >
 <%= link_to "Tweet一覧に戻る", tweets_path %>
+</div>
+</div>

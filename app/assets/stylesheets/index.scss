@@ -181,9 +181,42 @@
     padding-top: 20px;
     text-align: center;
   }
-  
+  .comment-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    width:33%;
+  }
+  .comment-wrap{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    width:33%;
+  }
+  .commentsuru{
+      display: flex;
+      justify-content: flex-end;
+      justify-content: space-around;
+      text-align: center;
+      width:33%;
+    }
+  .comments{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    width:41%;
+  }
+  .itiran{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    width:34%;
+  }
   .time {
-    width: 100px;
     display: flex;
     justify-content: flex-end;
     justify-content: space-around; 
@@ -193,6 +226,14 @@
     list-style: none;
     position: relative;
     li{}
+  }
+
+  .tweeta{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    width: 33%;
   }
   .picture p {
     position: absolute;/*絶対配置*/

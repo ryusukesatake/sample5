@@ -1,64 +1,76 @@
 <%= stylesheet_link_tag 'index', :media => "all" %>
 <h1>スケジュール管理法</h1>
-<div class="tweets-container">
 <% @tweet9.each do |t| %>
-    <div class="tweet">
-      <%= link_to t.user.name, user_path(t.user.id) %>
-      (♡<%= t.liked_users.count %>)
-      <% if t.image.present? %>
-        <%= image_tag t.image_url, :size => "500x300" %>
-      <% end %>
-      <div class="main-box">
-        <div class="left-container"><%= t.body %></div>
-        <div class=right-container>
-          <%= link_to "詳細", tweet_path(t.id) %>
-          <% if user_signed_in? && current_user.id == t.user_id %>  
-            <%= link_to "編集", edit_tweet_path(t.id) %>
-            <%= button_to "削除", tweet_path(t.id), method: :delete %>
-          <% end %>
-        </div>
-      </div>
-      <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
-    </div>
+  <div class="tweet">
+  <% if t.image.present? %>
+    <%= image_tag t.image_url, :size => "500x300" %>
+    <% else %>
+    <%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size:  "400x300" %>
+  <% end %>
+  <br>
+  ♡<%= t.liked_users.count %>
+  <%= link_to t.user.name, user_path(t.user.id) %>
+  
+  <div class="main-box">
+    <div class="left-container"><%= t.body %></div>
     <% if user_signed_in? %>
-  <% if current_user.already_liked?(t) %>
-      <%= button_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do  %>
-          <p>いいねを取り消す</p><%= t.likes.count %>
-          <i class="fas fa-heart"></i><%= t.likes.count %>
-      <% end %>
-  <% else %>
-      <%= button_to tweet_likes_path(t), method: :post do %>
-          <p>いいね</p><%= t.likes.count %>
-          <i class="far fa-heart"></i><%= t.likes.count %>
-      <% end %>
+<% if current_user.already_liked?(t) %>
+  <%= button_to tweet_like_path(id: t.id,tweet_id: t.id), method: :delete do%>
+      <p>いいねを取り消す</p><%= t.likes.count %>
+      <i class="fas fa-heart"></i><%= t.likes.count %>
   <% end %>
-  <% else %>
-  <p>いいねの数  </p><%= t.likes.count %>
-  <i class="far fa-heart"></i><%= t.likes.count %>
+<% else %>
+  <%= button_to tweet_likes_path(t), method: :post do %>
+      <p>いいね</p><%= t.likes.count %>
+      <i class="far fa-heart"></i><%= t.likes.count %>
   <% end %>
-
-</div>
-
-<div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% t.comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
+<% end %>
+<% else %>
+<p>いいねの数  </p><%= t.likes.count %>
+<i class="far fa-heart"></i><%= t.likes.count %>
+<% end %>
+<p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+    <div class=right-container>
+      <%= link_to "詳細へ", tweet_path(t.id) %>
+      <% if user_signed_in? && current_user.id == t.user_id %>  
+        <%= link_to "編集", edit_tweet_path(t.id) %>
+        <%= button_to "削除", tweet_path(t.id), method: :delete %>
+      <% end %>
     </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [t, Comment.new], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
-      <% end %>
-    <% end %>
-  <% end %>
+  </div>
 </div>
-  <% end %>
-  <%= link_to "Tweet一覧に戻る", tweets_path %>
+
+</div>
+<br>
+<div class="comment-wrapper">
+<p>コメント一覧</p>
+</div>
+<br>
+<div class="comment-wrap">
+<% t.comments.each do |c| %>
+<div>
+<%= c.user.email unless c.user.blank? %>さん
+<br>
+<%= c.content %>
+</div>
+</div>
+<br>
+<% end %>
+</div>
+<div class="comments">
+<% if user_signed_in? %>
+    <%= form_with(model: [t, Comment.new], local: true) do |f| %>
+    <%= f.text_area :content %>
+    <%= button_tag type: "submit" do %>
+    <i class="far fa-comments"></i> コメントする
+<% end %>
+<% end %>
+</div>
+<% end %>
+</div>
+<% end %>
+<br>
+<div class="itiran">
+<%= link_to "Tweet一覧に戻る", tweets_path %>
+</div>
 </div>
