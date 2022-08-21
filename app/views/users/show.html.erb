@@ -1,32 +1,38 @@
+<%= stylesheet_link_tag 'show', :media => "all" %>
+<div class="mypage">
 <h1>マイページ</h1>
+</div>
+<div class= "photo">
+  <%= image_tag @users.image_url, size: "250x200" if @users.image? %>
+  <%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size: "250x200" unless @users.image? %>
+</div>
 
+<div class="profile">
+  <p>名前 : <%= @users.name %></p>
+  <p>メールアドレス : <%= @users.email %></p>
+  <p>プロフィール : <%= @users.profile %></p>
+</div>
 
-<%= image_tag @users.image_url, size: "250x200" if @users.image? %>
-<%= image_tag "https://1.bp.blogspot.com/-D2I7Z7-HLGU/Xlyf7OYUi8I/AAAAAAABXq4/jZ0035aDGiE5dP3WiYhlSqhhMgGy8p7zACNcBGAsYHQ/s1600/no_image_square.jpg", size: "250x200" unless @users.image? %>
-
-<p>名前 : <%= @users.name %></p>
-<p>メールアドレス : <%= @users.email %></p>
-<p>プロフィール : <%= @users.profile %></p>
-
+<div class="hennsyuu">
 <% if current_user.id == @users.id %>
   <%= link_to "編集する", edit_user_registration_path %>
 <% end %>
+</div>
 <br>
+<div class="toukou">
 <h2>ユーザーの投稿一覧</h2>
 <% @users.tweets.each do |t| %>
   <%= t.user.name %>
   <%= link_to t.body, tweet_path(t.id) %>
 <% end %>
-
 <br>
+
 <h2>ユーザーがいいねした投稿一覧</h2>
 <% @users.liked_tweets.each do |t| %>
   <%= t.user.name %>
   <%= link_to t.body, tweet_path(t.id) %>
 <% end %>
 <br>
-
-
 
 <% if @users.id == current_user.id %>
 
@@ -42,16 +48,17 @@
     <% end %>
   <% end %>
 <% end %>
-<br>
 
-<%= link_to "ユーザー一覧",  users_path  %>
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+<div class="itiran">
+  <%= link_to "ユーザー一覧",  users_path  %>
 
+  <%= link_to "Tweet一覧に戻る", tweets_path %>
+</div>
 
 <br>
 
 <%= button_to "ログアウト", destroy_user_session_path, :method => :delete %>
-
+</div>
 
 
   
