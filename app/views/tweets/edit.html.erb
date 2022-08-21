@@ -1,5 +1,8 @@
+<%= stylesheet_link_tag 'now', :media => "all" %>
+<div class= "a">
 <%= form_for @tweet do |f| %>
     <%= f.label :body %>
-    <%= f.text_field :body, :size => 140 %> 
+    <%= f.text_field :body, :size => 80%> 
     <%= f.submit "編集する" %>
   <% end %>
+</div>

@@ -1,11 +1,13 @@
+<%= stylesheet_link_tag 'now', :media => "all" %>
+<div class="a">  
 <div class="post-container">
     <div class= "tweet6">
     <%= form_for @tweet do |f| %>
         <div class="field">
             <%= f.label :Title %>
-            <%= f.text_field :body, :size => 140 %>
+            <%= f.text_field :body, :size => 80 %>
         </div>
-        <%= f.label :genre %>
+        <%= f.label :genre  %>
         <%= f.select :genre, [["朝の有効活用法", 1], ["休日の活用法", 2], ["隙間や移動時間活用法", 3], ["有効活用スペース紹介", 4],["退屈に感じない方法", 5], ["眠くならない為の方法", 6], ["空きコマの活用法", 7], ["朝の支度時短法", 8], ["スケジュール管理法", 9], ["暇な時間の利用法", 10], ["効率良く勉強する方法", 11], ["その他", 12]], include_blank: "選択して下さい" %>
         <div class="field">
             <%= f.label :image %>
@@ -14,4 +16,5 @@
         <%= f.submit "Tweetする" %>
         <br>
         <% end %>
+</div>
 </div>
