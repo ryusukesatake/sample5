@@ -28,7 +28,7 @@
   <p>いいねの数  </p><%= @tweet.likes.count %>
   <i class="far fa-heart"></i><%= @tweet.likes.count %>
 <% end %>
-<p><%= @tweet.created_at.to_s(:datetime_jp) %></p>
+<p><%= @tweet.created_at.to_s{:datetime_jp} %></p>
 </div>
 <br>
 <div class="comment-wrapper">
@@ -49,7 +49,7 @@
 
 <div class="comments">
     <% if user_signed_in? %>
-      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+      <%= form_with{model: [@tweet, @comment], local: true} do |f| %>
         <%= f.text_area :content %>
         <%= button_tag type: "submit" do %>
           <i class="far fa-comments"></i> コメントする
